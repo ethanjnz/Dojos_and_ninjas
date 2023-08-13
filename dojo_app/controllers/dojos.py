@@ -18,3 +18,8 @@ def display_home():
 def create_dojo():
     Dojo.create(request.form)
     return redirect("/")
+
+@app.route('/dojo/<int:dojo_id>')
+def display_dojos(dojo_id):
+    dojos = Dojo.get_one(dojo_id)
+    return render_template('dojo_table.html', dojos=dojos)
